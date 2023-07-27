@@ -4,6 +4,8 @@ const transparentColor = Color(0x00000000);
 
 const redColor = Color(0xFFF44336);
 
+const greyColor = Color(0xFF9E9E9E);
+const greyColorOp050 = Color(0x809E9E9E);
 const greyishColor = Color(0xFFF6F6F6);
 
 const whiteColor = Color(0xFFFFFFFF);

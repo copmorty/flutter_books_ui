@@ -16,6 +16,6 @@ class CustomTheme {
       surface: greyishColor,
       onSurface: whiteColor,
     ),
-    scaffoldBackgroundColor: greyishColor,
+    scaffoldBackgroundColor: whiteColor,
   );
 }
