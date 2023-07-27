@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_books_ui/shared/colors.dart';
 import 'package:flutter_books_ui/shared/data/models/book.dart';
-import 'package:flutter_books_ui/shared/widgets/divider_stroke.dart';
-import 'package:flutter_books_ui/shared/widgets/text_stroke.dart';
+import 'package:flutter_books_ui/shared/sizes.dart';
+import 'package:flutter_books_ui/shared/widgets/divider_with_shadow.dart';
+import 'package:flutter_books_ui/shared/widgets/text_with_shadow.dart';
 
 class TagBookCard extends StatelessWidget {
   final Book book;
@@ -10,8 +11,10 @@ class TagBookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Container(
-      width: 310,
+      width: screenWidth * 0.8 + screenHorizontalPadding,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
@@ -19,7 +22,7 @@ class TagBookCard extends StatelessWidget {
           BoxShadow(
             color: greyColorOp050,
             spreadRadius: -5,
-            blurRadius: 10,
+            blurRadius: 20,
             offset: Offset(0, 15),
           ),
         ],
@@ -36,29 +39,21 @@ class TagBookCard extends StatelessWidget {
           Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextStroke(
+                  TextWithShadow(
                     book.title.toUpperCase(),
-                    style: const TextStyle(fontSize: 18, color: whiteColor, fontWeight: FontWeight.w800),
-                    strokeColor: blackColor,
-                    strokeWidth: 0.2,
+                    style: const TextStyle(fontSize: 20, color: whiteColor, fontWeight: FontWeight.w800),
                   ),
-                  const DividerStroke(
-                    thickness: 1.5,
-                    color: whiteColor,
-                    strokeWidth: 0.2,
-                    strokeColor: blackColor,
-                  ),
-                  TextStroke(
+                  const SizedBox(height: 3),
+                  const DividerWithShadow(color: whiteColor, thickness: 1),
+                  TextWithShadow(
                     book.subtitle,
                     style: const TextStyle(fontSize: 14, color: whiteColor, fontWeight: FontWeight.w800),
-                    strokeColor: blackColor,
-                    strokeWidth: 0.2,
                   ),
                 ],
               ),

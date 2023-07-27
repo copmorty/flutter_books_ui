@@ -24,12 +24,12 @@ class TagFilterChip extends StatelessWidget {
         style: TextStyle(
           fontSize: 14,
           color: selected ? whiteColor : blackColor,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w800,
         ),
       ),
       onSelected: (bool selected) => select(),
-      side: const BorderSide(color: blackColor, width: 2),
-      // padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
+      side: const BorderSide(color: blackColor, width: 3),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
     );
   }
 }

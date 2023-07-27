@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_books_ui/shared/colors.dart';
 
+@Deprecated('Will be removed')
 class DividerStroke extends StatelessWidget {
   final double? thickness;
   final Color? color;

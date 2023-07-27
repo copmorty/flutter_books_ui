@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_books_ui/shared/colors.dart';
 
+@Deprecated('Will be removed')
 class TextStroke extends StatelessWidget {
   final String text;
   final TextStyle? style;

@@ -24,10 +24,12 @@ class _HomeHeaderState extends State<HomeHeader> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Column(
       children: [
         SizedBox(
-          height: 75,
+          height: screenHeight * 0.096,
           child: ScrollConfiguration(
             behavior: const NoGlowScrollBehavior(),
             child: ListView.separated(
@@ -44,9 +46,9 @@ class _HomeHeaderState extends State<HomeHeader> {
           ),
         ),
         SizedBox(
-          height: 190,
+          height: screenHeight * 0.268,
           child: ListView.separated(
-            padding: const EdgeInsets.fromLTRB(screenHorizontalPadding, 10, screenHorizontalPadding, 20),
+            padding: const EdgeInsets.fromLTRB(screenHorizontalPadding, 10, screenHorizontalPadding, 40),
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, i) => TagBookCard(filteredBooks[_selectedTag]![i]),

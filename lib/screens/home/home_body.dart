@@ -8,9 +8,10 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Column(
       children: [
-        const SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: screenHorizontalPadding),
           child: Row(
@@ -19,7 +20,7 @@ class HomeBody extends StatelessWidget {
               const Text(
                 'Popular',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: FontWeight.w800,
                 ),
               ),
@@ -27,9 +28,9 @@ class HomeBody extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 20),
         SizedBox(
-          height: 300,
+          height: screenHeight * 0.39,
           child: ListView.separated(
             padding: const EdgeInsets.symmetric(horizontal: screenHorizontalPadding),
             scrollDirection: Axis.horizontal,

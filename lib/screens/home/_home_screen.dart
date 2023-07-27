@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
       value: CustomSystemUiOverlayStyle.dark,
       child: Scaffold(
         body: SafeArea(
+          bottom: false,
           child: SingleChildScrollView(
             child: Column(
               children: [
