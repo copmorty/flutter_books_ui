@@ -31,7 +31,7 @@ class DetailScreen extends StatelessWidget {
                   children: [
                     const DetailAppBar(),
                     DetailBody(book),
-                    const DetailFooter(),
+                    DetailFooter(),
                   ],
                 ),
               ),
