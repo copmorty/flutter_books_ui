@@ -27,7 +27,7 @@ const _books = [
     coverImage: 'assets/images/eternal_spark-cover.png',
     rawCoverImage: 'assets/images/eternal_spark-rawcover.png',
     tags: [Tag.trending, Tag.novels],
-    numLikes: 1600,
+    numLikes: 2359,
   ),
   Book(
     id: '3',
@@ -39,7 +39,7 @@ const _books = [
     coverImage: 'assets/images/mastering_the_anglers_craft-cover.png',
     rawCoverImage: 'assets/images/mastering_the_anglers_craft-rawcover.png',
     tags: [Tag.nature],
-    numLikes: 1150,
+    numLikes: 2187,
   ),
   Book(
     id: '4',
@@ -51,7 +51,7 @@ const _books = [
     coverImage: 'assets/images/echoes_of_the_abyss-cover.png',
     rawCoverImage: 'assets/images/echoes_of_the_abyss-rawcover.png',
     tags: [Tag.trending, Tag.nature],
-    numLikes: 1770,
+    numLikes: 2200,
   ),
   Book(
     id: '5',
@@ -135,4 +135,7 @@ final Map<Tag, List<Book>> filteredBooks = {
   Tag.other: _books.where((element) => element.tags.contains(Tag.other)).toList(),
 };
 
-final List<Book> popularBooks = _books.where((element) => element.starRating > 8).toList()..sort((a, b) => b.starRating.compareTo(a.starRating));
+final List<Book> popularBooks = _books.where((element) => element.starRating > 8).toList()
+  ..sort((a, b) => b.starRating.compareTo(a.starRating));
+
+final List<Book> mostLikedBooks = List.from(_books)..sort((a, b) => b.numLikes.compareTo(a.numLikes));

@@ -51,7 +51,7 @@ class _HomeHeaderState extends State<HomeHeader> {
             padding: const EdgeInsets.fromLTRB(screenHorizontalPadding, 10, screenHorizontalPadding, 40),
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, i) => TagBookCard(filteredBooks[_selectedTag]![i]),
+            itemBuilder: (context, i) => TagBookCard(filteredBooks[_selectedTag]![i], key: UniqueKey(),),
             separatorBuilder: (context, i) => const SizedBox(width: 20),
             itemCount: filteredBooks[_selectedTag]!.length,
           ),

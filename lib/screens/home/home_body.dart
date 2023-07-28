@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_books_ui/screens/home/widgets/popular_book_card.dart';
+import 'package:flutter_books_ui/screens/home/widgets/popular_book_widget.dart';
 import 'package:flutter_books_ui/shared/data/data_source.dart';
 import 'package:flutter_books_ui/shared/sizes.dart';
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_books_ui/shared/colors.dart';
 
+@Deprecated('Will be removed')
 class DividerWithShadow extends StatelessWidget {
   final double? height;
   final double? thickness;
