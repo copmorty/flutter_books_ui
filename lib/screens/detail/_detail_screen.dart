@@ -6,6 +6,7 @@ import 'package:flutter_books_ui/screens/detail/detail_footer.dart';
 import 'package:flutter_books_ui/shared/colors.dart';
 import 'package:flutter_books_ui/shared/data/models/book.dart';
 import 'package:flutter_books_ui/shared/helpers/custom_system_ui_overlay_style.dart';
+import 'package:flutter_books_ui/shared/sizes.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key});
@@ -27,12 +28,17 @@ class DetailScreen extends StatelessWidget {
               color: transparentColor,
               child: SafeArea(
                 bottom: false,
-                child: Column(
-                  children: [
-                    const DetailAppBar(),
-                    DetailBody(book),
-                    DetailFooter(),
-                  ],
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: screenBottomPadding),
+                    child: Column(
+                      children: [
+                        const DetailAppBar(),
+                        DetailBody(book),
+                        DetailFooter(),
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ),

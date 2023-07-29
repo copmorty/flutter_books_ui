@@ -32,11 +32,12 @@ class DetailBody extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           SizedBox(
-            height: screenHeight * 0.135,
+            height: screenHeight * 0.125,
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Text(
                 book.description,
-                style: const TextStyle(fontSize: 15, color: whiteColor, fontWeight: FontWeight.w500),
+                style: const TextStyle(fontSize: 14, color: whiteColor, fontWeight: FontWeight.w500),
               ),
             ),
           )

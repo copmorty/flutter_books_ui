@@ -4,6 +4,7 @@ import 'package:flutter_books_ui/screens/home/home_app_bar.dart';
 import 'package:flutter_books_ui/screens/home/home_body.dart';
 import 'package:flutter_books_ui/screens/home/home_header.dart';
 import 'package:flutter_books_ui/shared/helpers/custom_system_ui_overlay_style.dart';
+import 'package:flutter_books_ui/shared/sizes.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,12 +17,15 @@ class HomeScreen extends StatelessWidget {
         body: SafeArea(
           bottom: false,
           child: SingleChildScrollView(
-            child: Column(
-              children: [
-                HomeAppBar(),
-                HomeHeader(),
-                HomeBody(),
-              ],
+            child: Padding(
+              padding: EdgeInsets.only(bottom: screenBottomPadding),
+              child: Column(
+                children: [
+                  HomeAppBar(),
+                  HomeHeader(),
+                  HomeBody(),
+                ],
+              ),
             ),
           ),
         ),
