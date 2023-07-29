@@ -1,16 +1,8 @@
-# flutter_books_ui
+# Flutter Books UI Challenge
 
-A new Flutter project.
+https://github.com/copmorty/flutter_books_ui/assets/23016725/5b997c4f-74f4-49b3-b246-7695cf7a5fc3
 
-## Getting Started
+## Description
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This Flutter UI challenge focuses on creating an elegant Books Application user interface.\
+It was inspired by [Flutter UI Dev](https://twitter.com/ui_flutter/status/1684571984980758528), and the design is by [Hank](https://dribbble.com/shots/5049252-Books-Application).
