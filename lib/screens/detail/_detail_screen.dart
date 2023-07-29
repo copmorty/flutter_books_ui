@@ -8,8 +8,50 @@ import 'package:flutter_books_ui/shared/data/models/book.dart';
 import 'package:flutter_books_ui/shared/helpers/custom_system_ui_overlay_style.dart';
 import 'package:flutter_books_ui/shared/sizes.dart';
 
-class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key});
+class DetailScreen extends StatefulWidget {
+  final Animation<double> transitionAnimation;
+
+  const DetailScreen(
+    this.transitionAnimation, {
+    super.key,
+  });
+
+  @override
+  State<DetailScreen> createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _opacityAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+
+    _opacityAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
+    );
+
+    widget.transitionAnimation.addStatusListener(_animationHandler);
+  }
+
+  void _animationHandler(AnimationStatus status) {
+    if (status == AnimationStatus.completed) {
+      _animationController.forward();
+    }
+  }
+
+  @override
+  void dispose() {
+    _animationController.removeStatusListener(_animationHandler);
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +70,18 @@ class DetailScreen extends StatelessWidget {
               color: transparentColor,
               child: SafeArea(
                 bottom: false,
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: screenBottomPadding),
-                    child: Column(
-                      children: [
-                        const DetailAppBar(),
-                        DetailBody(book),
-                        DetailFooter(),
-                      ],
+                child: FadeTransition(
+                  opacity: _opacityAnimation,
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: screenBottomPadding),
+                      child: Column(
+                        children: [
+                          const DetailAppBar(),
+                          DetailBody(book),
+                          const DetailFooter(),
+                        ],
+                      ),
                     ),
                   ),
                 ),

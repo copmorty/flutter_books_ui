@@ -1,17 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_books_ui/screens/detail/widgets/star_rating_widget.dart';
 import 'package:flutter_books_ui/shared/colors.dart';
 import 'package:flutter_books_ui/shared/data/models/book.dart';
 import 'package:flutter_books_ui/shared/sizes.dart';
 
-class DetailBody extends StatelessWidget {
+class DetailBody extends StatefulWidget {
   final Book book;
 
   const DetailBody(this.book, {super.key});
 
   @override
+  State<DetailBody> createState() => _DetailBodyState();
+}
+
+class _DetailBodyState extends State<DetailBody> with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<Offset> _slideAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    )..forward();
+
+    _slideAnimation = Tween<Offset>(begin: const Offset(0, 0.1), end: Offset.zero).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final title = book.title.replaceFirst(' ', '\n');
+    final title = widget.book.title.replaceFirst(' ', '\n');
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: screenHorizontalPadding * 2),
@@ -22,65 +51,33 @@ class DetailBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Expanded(
-                child: Text(
-                  title,
-                  style: const TextStyle(fontSize: 33, color: whiteColor, fontWeight: FontWeight.w700),
+                child: SlideTransition(
+                  position: _slideAnimation,
+                  child: Text(
+                    title,
+                    style: const TextStyle(fontSize: 33, color: whiteColor, fontWeight: FontWeight.w700),
+                  ),
                 ),
               ),
-              _RatingWidget(book.starRating)
+              StarRatingWidget(widget.book.starRating)
             ],
           ),
           const SizedBox(height: 20),
-          SizedBox(
-            height: screenHeight * 0.125,
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Text(
-                book.description,
-                style: const TextStyle(fontSize: 14, color: whiteColor, fontWeight: FontWeight.w500),
+          SlideTransition(
+            position: _slideAnimation,
+            child: SizedBox(
+              height: screenHeight * 0.125,
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Text(
+                  widget.book.description,
+                  style: const TextStyle(fontSize: 14, color: whiteColor, fontWeight: FontWeight.w500),
+                ),
               ),
             ),
           )
         ],
       ),
-    );
-  }
-}
-
-class _RatingWidget extends StatelessWidget {
-  final double rating;
-
-  const _RatingWidget(this.rating, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final int fiveStarRating = (rating / 2).truncate();
-
-    return Column(
-      children: [
-        Text(
-          rating.toString(),
-          style: const TextStyle(fontSize: 25, color: whiteColor, fontWeight: FontWeight.w700),
-        ),
-        const SizedBox(height: 5),
-        Row(
-          children: [
-            for (var i = 0; i < fiveStarRating; i++)
-              const Icon(
-                Icons.star,
-                color: blackColor,
-                size: 12,
-              ),
-            for (var i = 0; i < 5 - fiveStarRating; i++)
-              const Icon(
-                Icons.star,
-                color: whiteColor,
-                size: 12,
-              ),
-          ],
-        ),
-        const SizedBox(height: 5),
-      ],
     );
   }
 }
